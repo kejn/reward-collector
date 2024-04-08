@@ -1,0 +1,17 @@
+= Reward Collector
+
+This app is intended to be used as internal service to retail platform and should not be exposed directly to Internet.
+It allows to calculate reward points of specific users based on their purchase history.
+
+Considering the above there's no security implemented.
+
+== Feeding service with data
+
+Registering a purchase.
+
+.request
+include::{snippets}/purchase/http-request.adoc[]
+
+.response
+include::{snippets}/purchase/http-response.adoc[]
+
