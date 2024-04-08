@@ -14,7 +14,7 @@ See https://www.baeldung.com/lombok-ide
 ./gradlew integrationTest 
 
 # run API tests
-./gradlew integrationTest 
+./gradlew apiTest 
 
 # run all tests
 ./gradlew test 
