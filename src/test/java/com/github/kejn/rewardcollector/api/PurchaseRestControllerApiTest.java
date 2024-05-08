@@ -2,7 +2,6 @@ package com.github.kejn.rewardcollector.api;
 
 import static com.github.kejn.rewardcollector.api.PurchaseRestController.ROOT_PATH;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -13,7 +12,6 @@ import java.util.Collections;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -28,7 +26,6 @@ import com.github.kejn.rewardcollector.tag.TestTag;
 
 @Tag(TestTag.API)
 @WebMvcTest(PurchaseRestController.class)
-@AutoConfigureRestDocs(outputDir = ApiCommons.DOCS_SNIPPETS)
 class PurchaseRestControllerApiTest implements JsonHelper {
 
 	private static final String SOME_USER_ID = "someUserId";
@@ -60,8 +57,7 @@ class PurchaseRestControllerApiTest implements JsonHelper {
 				.content(asJsonString(requestBody)).accept(MediaType.APPLICATION_JSON));
 
 		// then
-		result.andExpect(status().isCreated()).andExpect(content().string(EMPTY))//
-				.andDo(document(path));
+		result.andExpect(status().isCreated()).andExpect(content().string(EMPTY));
 	}
 
 	@Test
@@ -74,7 +70,7 @@ class PurchaseRestControllerApiTest implements JsonHelper {
 		ResultActions result = mvc.perform(MockMvcRequestBuilders.get(url).accept(MediaType.APPLICATION_JSON));
 
 		// then
-		result.andExpect(status().isOk()).andExpect(content().json(asJsonString(Collections.emptyList()))).andDo(document(path));
+		result.andExpect(status().isOk()).andExpect(content().json(asJsonString(Collections.emptyList())));
 	}
 
 	@Test
@@ -87,7 +83,7 @@ class PurchaseRestControllerApiTest implements JsonHelper {
 		ResultActions result = mvc.perform(MockMvcRequestBuilders.delete(url).accept(MediaType.APPLICATION_JSON));
 
 		// then
-		result.andExpect(status().isNoContent()).andDo(document(path));
+		result.andExpect(status().isNoContent());
 	}
 
 	@Test
@@ -100,7 +96,7 @@ class PurchaseRestControllerApiTest implements JsonHelper {
 		ResultActions result = mvc.perform(MockMvcRequestBuilders.delete(url).accept(MediaType.APPLICATION_JSON));
 
 		// then
-		result.andExpect(status().isNoContent()).andDo(document(path));
+		result.andExpect(status().isInternalServerError());
 	}
 
 }

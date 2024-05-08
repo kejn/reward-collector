@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.github.kejn.rewardcollector.data.PurchaseDto;
 import com.github.kejn.rewardcollector.data.PurchaseVO;
 import com.github.kejn.rewardcollector.service.PurchaseService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +37,7 @@ public class PurchaseRestController {
 	private final PurchaseService service;
 
 	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Object> registerPurchase(@RequestBody @NotEmpty @Valid PurchaseDto purchase) {
 		service.registerPurchase(purchase);
 
@@ -57,10 +60,18 @@ public class PurchaseRestController {
 		service.deleteByUserIdentifier(userIdentifier);
 	}
 
+	@Operation(summary = "This was supposed to delete all registered transactions", //
+			description = "... however we decided to remove this endpoint. It will always throw errors.", //
+			deprecated = true)
 	@DeleteMapping
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteAllRegisteredTransactions() {
-		service.purge();
+		try {
+			Integer alwaysThrowingError = null;
+			alwaysThrowingError.byteValue();
+		} catch (Exception ex) {
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, ex.getLocalizedMessage(), ex);
+		}
 	}
 
 }

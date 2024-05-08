@@ -48,6 +48,13 @@ Because this affects directly business logic, jUnit integration tests have their
 so that you don't have to update jUnit code everytime business requests to update some ranges or multipliers.
 
 
-# API documentation (TODO)
+# API documentation
 
-See src/main/asciidoc.
+You can access API documentation in different forms. Below links assume that you access it from default `localhost:8080` server.
+
+Swagger UI: [/swagger](http://localhost:8080/swagger)
+
+OpenAPI (JSON): [/api-docs](http://localhost:8080/api-docs)
+
+OpenAPI (YAML): [/api-docs.yaml](http://localhost:8080/api-docs.yml)
+
