@@ -23,7 +23,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.github.kejn.rewardcollector.calculator.TresholdRewardPointsCalculator;
+import com.github.kejn.rewardcollector.calculator.ThresholdRewardPointsCalculator;
 import com.github.kejn.rewardcollector.data.PurchaseVO;
 import com.github.kejn.rewardcollector.tag.TestTag;
 
@@ -36,7 +36,7 @@ class PointsSummaryServiceTest {
 	private static final BigDecimal ANOTHER_TRANSACTION_VALUE = new BigDecimal(111);
 
 	@Mock
-	private TresholdRewardPointsCalculator calculator;
+	private ThresholdRewardPointsCalculator calculator;
 
 	@InjectMocks
 	private PointsSummaryService service;

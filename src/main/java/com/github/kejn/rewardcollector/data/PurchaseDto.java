@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PurchaseDto {
+	
 	@NotBlank
 	private String userIdentifier;
 	

@@ -19,9 +19,9 @@ public class PointsSummaryService {
 	private final RewardPointsCalculator calculator;
 
 	public long pointsMonthly(YearMonth selectedMonth, List<PurchaseVO> transactions) {
-		return transactions.stream()//
-				.filter(matchingSelectedMonth(selectedMonth))//
-				.mapToLong(calculatePointsOfSingleTransaction())//
+		return transactions.stream() //
+				.filter(matchingSelectedMonth(selectedMonth)) //
+				.mapToLong(calculatePointsOfSingleTransaction()) //
 				.sum();
 	}
 
