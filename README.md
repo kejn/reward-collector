@@ -56,5 +56,5 @@ Swagger UI: [/swagger](http://localhost:8080/swagger)
 
 OpenAPI (JSON): [/api-docs](http://localhost:8080/api-docs)
 
-OpenAPI (YAML): [/api-docs.yaml](http://localhost:8080/api-docs.yml)
+OpenAPI (YAML): [/api-docs.yaml](http://localhost:8080/api-docs.yaml)
 
